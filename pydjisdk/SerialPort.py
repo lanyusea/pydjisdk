@@ -1,5 +1,6 @@
 import serial
 import time
+import logging
 from utils import StoppableThread
 
 

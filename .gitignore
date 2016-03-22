@@ -1,5 +1,4 @@
 *.pyc
-config.yaml
 log/*.*
 *.log
 *.log.*

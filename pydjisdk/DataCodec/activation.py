@@ -30,13 +30,12 @@ def decode_acquire_api_version_ack(s):
 
 
 ########################################
-ACTIVE_API_FMT = '<III32s'
+ACTIVE_API_FMT = '<II32s'
 
 
 def encode_active_api(**kwargs):
     buf = struct.pack(ACTIVE_API_FMT,
                       kwargs['app_id'],
-                      kwargs['api_level'],
                       kwargs['app_ver'],
                       kwargs['bundle_id'],
                       )
@@ -46,11 +45,10 @@ def encode_active_api(**kwargs):
 def decode_active_api(s):
     rst = struct.unpack(ACTIVE_API_FMT, s)
     app_id = rst[0]
-    api_level = rst[1]
-    app_ver = rst[2]
-    bundle_id = rst[3]
-    logging.getLogger(LOGGER_NAME).info('AppID:{} Level:{} Version:{} bundle:{}'.format(
-        app_id, api_level, app_ver, bundle_id))
+    api_ver  = rst[1]
+    bundle_id = rst[2]
+    logging.getLogger(LOGGER_NAME).info('AppID:{} Version:{} bundle:{}'.format(
+        app_id, app_ver, bundle_id))
 
 ########################################
 ACTIVE_API_ACK_FMT = '<H'

@@ -15,20 +15,20 @@ msg_flag_struct_table = zip(
     [1] * len(msg_flag_field_table),)
 
 msg_info = dict()
-msg_info['stamp'] = ('I', ['time'])
+msg_info['stamp'] = ('2IB', ['time', 'asr_ts', 'sync_flag'])
 msg_info['quat'] = ('4f', ['q0', 'q1', 'q2', 'q3'])
 msg_info['acc'] = ('3f', ['ax', 'ay', 'az'])
-msg_info['lin_vel'] = ('3f', ['vx', 'vy', 'vz'])
+msg_info['lin_vel'] = ('3fB', ['vx', 'vy', 'vz', 'vel_flag'])
 msg_info['ang_vel'] = ('3f', ['wx', 'wy', 'wz'])
 msg_info['gps'] = ('2d2fB', ['longti', 'lati', 'alti',
                               'height', 'health_flag'])
 msg_info['mag'] = ('3h', ['mx', 'my', 'mz'])
 msg_info['rc'] = ('6h', ['roll', 'pitch', 'yaw',
                           'throttle', 'mode', 'gear'])
-msg_info['gim'] = ('3f', ['gimroll', 'gimpitch', 'gimyaw'])
+msg_info['gim'] = ('3fB', ['gimroll', 'gimpitch', 'gimyaw','limit'])
 msg_info['status'] = ('B', ['status'])
 msg_info['batt'] = ('B', ['status'])
-msg_info['cmd'] = ('B', ['status'])
+msg_info['cmd'] = ('2B', ['mode','status'])
 
 
 class MessageFlagStruct(ctypes.LittleEndianStructure):
@@ -62,4 +62,5 @@ def decode_message(s):
     # print d
 
 if __name__ == '__main__':
-    decode_message('\x01\x10')
+	pass
+    #decode_message('\x01\x10')

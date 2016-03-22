@@ -1,5 +1,6 @@
 from ..utils import *
 import struct
+import logging
 
 LOGGER_NAME = 'app.codec'
 
